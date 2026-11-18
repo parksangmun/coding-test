@@ -94,6 +94,17 @@
     .join-card h3 { font-size:18px; line-height:1.45; margin-bottom:8px; position:relative; z-index:1; }
     .join-card p { margin:0 0 17px; font-size:11px; color:#d0dfd4; line-height:1.7; position:relative; z-index:1; }
     .join-card a { display:inline-block; padding:10px 13px; background:#d8ed9b; color:#294c39; border-radius:7px; font-size:10px; font-weight:800; position:relative; z-index:1; }
+    .partner-card { padding:21px; }
+    .partner-card h3 { margin:0 0 6px; font-size:17px; }
+    .partner-card > p { margin:0 0 16px; color:var(--muted); font-size:11px; line-height:1.6; }
+    .partner-form { display:grid; gap:11px; }
+    .partner-form label { display:grid; gap:5px; color:var(--subtle-ink); font-size:11px; font-weight:700; }
+    .partner-form input,.partner-form textarea { width:100%; padding:10px 11px; border:1px solid var(--line); border-radius:8px; background:var(--surface-soft); color:var(--ink); font:inherit; font-size:12px; }
+    .partner-form textarea { min-height:88px; resize:vertical; }
+    .partner-form input:focus,.partner-form textarea:focus { outline:2px solid var(--green); outline-offset:1px; }
+    .partner-form button { padding:11px 14px; border:0; border-radius:8px; background:var(--green); color:white; font-size:12px; font-weight:700; cursor:pointer; }
+    .partner-form button:hover { filter:brightness(.92); }
+    .form-note { margin:0; color:var(--faint-ink); font-size:10px; line-height:1.5; }
     footer { border-top:1px solid var(--line); padding:24px 0 30px; color:var(--faint-ink); font-size:10px; }
     .footer-row { display:flex; justify-content:space-between; align-items:center; }
     .footer-row .brand { font-size:17px; color:var(--ink); }.footer-row .brand-mark { width:24px; height:24px; font-size:13px; border-radius:8px 8px 8px 3px; }
@@ -161,7 +172,19 @@
           <a class="trending" href="#feed"><span class="rank">04</span><span class="trend-text">동네 친구와 플로깅 했어요 🌱<small>동네 생활 · 댓글 18</small></span></a>
         </section>
         <section class="side-card"><h3>모여와 함께하는 사람들</h3><div class="stats"><div class="stat"><strong>12.8k</strong><span>함께하는 멤버</span></div><div class="stat"><strong>1.2k</strong><span>오늘의 이야기</span></div></div></section>
-        <section class="side-card join-card" id="join"><h3>당신의 이야기도<br>들려주세요!</h3><p>가입은 간단하게, 대화는 편안하게.<br>모여에서 새로운 연결을 시작해요.</p><a href="mailto:hello@moye.community">커뮤니티 참여하기 ↗</a></section>
+        <section class="side-card partner-card" id="join">
+          <h3>제휴 문의</h3>
+          <p>모여와 함께할 협업 아이디어를 들려주세요.</p>
+          <form class="partner-form" action="https://formspree.io/f/mrpqkqna" method="POST">
+            <label>이름<input type="text" name="name" autocomplete="name" required></label>
+            <label>이메일<input type="email" name="email" autocomplete="email" required></label>
+            <label>회사 또는 서비스명<input type="text" name="company"></label>
+            <label>문의 내용<textarea name="message" rows="4" required></textarea></label>
+            <input type="hidden" name="_subject" value="모여 제휴 문의">
+            <button type="submit">제휴 문의 보내기 ↗</button>
+            <p class="form-note">입력하신 정보는 제휴 문의 답변을 위해서만 사용됩니다.</p>
+          </form>
+        </section>
       </aside>
     </div>
   </main>
