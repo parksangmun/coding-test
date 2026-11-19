@@ -1,230 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f5f7f4">
-  <meta name="description" content="관심사가 비슷한 사람들과 배우고 나누는 동네 커뮤니티, 모여.">
-  <title>모여 — 관심사로 연결되는 커뮤니티</title>
-  <script>
-    const savedTheme = localStorage.getItem('moyeo-theme');
-    document.documentElement.dataset.theme = savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f5ef">
+  <meta name="description" content="사진 한 장으로 알아보는 나의 강아지상·고양이상 테스트">
+  <title>나는 무슨 상? — 동물상 테스트</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    :root { color-scheme:light; --bg:#f5f7f4; --surface:#fff; --surface-soft:#f2f5f2; --ink:#202923; --muted:#78827b; --green:#35765a; --mint:#e3f1e8; --line:#e5eae5; --lime:#d8ed9b; --hero:#dff0e5; --hero-decoration:#c3e3ce; --subtle-ink:#59645d; --faint-ink:#929a94; --soft-border:#edf0ed; --card-soft:#f5f8f5; --header:rgba(255,255,255,.9); }
-    :root[data-theme="dark"] { color-scheme:dark; --bg:#141a16; --surface:#1d2520; --surface-soft:#29342d; --ink:#e6eee8; --muted:#a4b0a7; --green:#83c69d; --mint:#243b2d; --line:#303c34; --lime:#d8ed9b; --hero:#20382a; --hero-decoration:#31543d; --subtle-ink:#b6c5ba; --faint-ink:#9aa99e; --soft-border:#303b33; --card-soft:#263129; --header:rgba(26,34,29,.92); }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--bg); color:var(--ink); font-family:'DM Sans','Noto Sans KR',sans-serif; }
-    a { color:inherit; text-decoration:none; }
-    button { font:inherit; }
-    .wrap { width:min(1160px,calc(100% - 48px)); margin:auto; }
-    header { height:76px; background:var(--header); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:10; backdrop-filter:blur(14px); }
-    .nav { height:100%; display:flex; align-items:center; justify-content:space-between; }
-    .brand { display:flex; align-items:center; gap:9px; font-size:23px; font-weight:800; letter-spacing:-1.4px; }
-    .brand-mark { display:grid; place-items:center; width:31px; height:31px; background:var(--green); border-radius:11px 11px 11px 4px; color:white; font-size:17px; }
-    .links { display:flex; align-items:center; gap:34px; color:var(--subtle-ink); font-size:13px; font-weight:600; }
-    .links a:hover { color:var(--green); }
-    .nav-actions { display:flex; align-items:center; gap:17px; font-size:12px; font-weight:700; }
-    .login { color:var(--subtle-ink); }
-    .theme-toggle { width:36px; height:36px; display:grid; place-items:center; border:1px solid var(--line); border-radius:50%; background:var(--surface); color:var(--ink); font-size:17px; cursor:pointer; }
-    .theme-toggle:hover { border-color:var(--green); }
-    .join { background:var(--green); color:white; padding:12px 18px; border-radius:9px; }
-    .menu-toggle { display:none; background:none; border:0; font-size:24px; color:var(--ink); }
-    .hero { margin-top:28px; min-height:334px; border-radius:20px; background:var(--hero); position:relative; overflow:hidden; display:flex; align-items:center; padding:52px 7%; }
-    .hero:after { content:'✳'; position:absolute; right:8%; top:-56px; color:var(--hero-decoration); font-size:390px; line-height:1; transform:rotate(-12deg); }
-    .hero-copy { max-width:570px; position:relative; z-index:1; }
-    .eyebrow { display:inline-flex; align-items:center; gap:7px; color:var(--green); font-size:11px; font-weight:800; letter-spacing:.7px; }
-    .eyebrow i { width:7px; height:7px; border-radius:50%; background:#5db47c; box-shadow:0 0 0 4px var(--mint); }
-    h1 { margin:17px 0 13px; font-size:clamp(36px,5vw,58px); line-height:1.2; letter-spacing:-3.2px; font-weight:800; }
-    h1 span { color:var(--green); }
-    .hero p { margin:0; color:var(--subtle-ink); font-size:14px; line-height:1.8; }
-    .hero-actions { display:flex; align-items:center; gap:18px; margin-top:26px; }
-    .primary { display:inline-flex; align-items:center; gap:22px; padding:14px 19px; border-radius:9px; background:var(--green); color:#fff; font-size:12px; font-weight:700; box-shadow:0 5px 12px #35765a22; }
-    .primary:hover { background:#285f46; }
-    .hero-note { font-size:11px; color:var(--subtle-ink); }
-    .hero-badge { position:absolute; z-index:1; right:10%; bottom:37px; width:144px; height:144px; border-radius:50%; background:var(--lime); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:#3d5d37; font-size:11px; font-weight:700; line-height:1.55; transform:rotate(8deg); box-shadow:0 12px 35px #50765214; }
-    .hero-badge strong { font-size:27px; letter-spacing:-1px; }
-    .section-title { display:flex; justify-content:space-between; align-items:end; margin:44px 0 18px; }
-    .section-title h2 { font-size:21px; letter-spacing:-1px; margin:0; }
-    .section-title p { margin:7px 0 0; font-size:12px; color:var(--muted); }
-    .more { color:var(--green); font-size:11px; font-weight:700; }
-    .topics { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; }
-    .topic { background:var(--surface); border:1px solid var(--line); border-radius:13px; padding:17px 15px; min-height:111px; transition:.2s; }
-    .topic:hover { transform:translateY(-3px); border-color:#bdd8c5; box-shadow:0 8px 20px #244d3210; }
-    .topic-icon { font-size:23px; display:block; margin-bottom:10px; }
-    .topic strong { display:block; font-size:13px; }
-    .topic small { display:block; color:var(--faint-ink); font-size:10px; margin-top:4px; }
-    .content-grid { display:grid; grid-template-columns:minmax(0,1fr) 292px; gap:20px; align-items:start; margin:38px 0 72px; }
-    .feed-panel,.side-card { background:var(--surface); border:1px solid var(--line); border-radius:14px; }
-    .feed-head { padding:21px 22px 0; }
-    .feed-heading { display:flex; justify-content:space-between; align-items:center; }
-    .feed-heading h2 { margin:0; font-size:20px; letter-spacing:-.8px; }
-    .write { padding:9px 13px; border:1px solid var(--line); border-radius:8px; color:var(--green); font-size:11px; font-weight:700; }
-    .filters { display:flex; gap:7px; margin-top:19px; overflow:auto; scrollbar-width:none; }
-    .filters::-webkit-scrollbar { display:none; }
-    .filter { white-space:nowrap; padding:8px 12px; border:0; border-radius:20px; background:var(--surface-soft); color:var(--muted); font-size:11px; cursor:pointer; }
-    .filter.active { background:var(--green); color:white; }
-    .post { padding:19px 22px; border-top:1px solid var(--soft-border); display:grid; grid-template-columns:42px 1fr auto; gap:12px; align-items:start; }
-    .avatar { width:40px; height:40px; border-radius:14px; display:grid; place-items:center; font-size:20px; background:#f4e8d9; }
-    .avatar.blue { background:#e3ecf5; }.avatar.pink { background:#f6e4e8; }.avatar.yellow { background:#f5efd8; }
-    .post-meta { display:flex; align-items:center; flex-wrap:wrap; gap:7px; color:var(--faint-ink); font-size:10px; }
-    .post-meta b { color:var(--subtle-ink); font-size:10px; }
-    .board { color:var(--green); font-weight:700; }
-    .post h3 { margin:8px 0 5px; font-size:14px; letter-spacing:-.35px; line-height:1.5; }
-    .post p { margin:0; color:var(--muted); font-size:11px; line-height:1.65; }
-    .post-stats { display:flex; gap:12px; color:var(--faint-ink); font-size:10px; margin-top:11px; }
-    .post-stats span:first-child { color:#dc7773; }
-    .post-art { width:72px; height:72px; border-radius:10px; display:grid; place-items:center; background:#eff3ea; font-size:31px; }
-    .side-card { padding:20px; margin-bottom:14px; }
-    .side-card h3 { margin:0 0 14px; font-size:14px; }
-    .trending { display:flex; gap:11px; padding:10px 0; border-top:1px solid var(--soft-border); }
-    .rank { color:#8aa694; font-size:12px; font-weight:800; width:15px; }
-    .trend-text { font-size:11px; line-height:1.5; font-weight:600; }
-    .trend-text small { display:block; color:var(--faint-ink); font-size:10px; font-weight:400; margin-top:3px; }
-    .stats { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    .stat { background:var(--card-soft); padding:12px; border-radius:9px; }
-    .stat strong { display:block; color:var(--green); font-size:19px; letter-spacing:-.5px; }
-    .stat span { color:#859087; font-size:10px; }
-    .join-card { background:#294c39; color:white; overflow:hidden; position:relative; }
-    .join-card:after { content:'✳'; position:absolute; right:-14px; bottom:-50px; color:#ffffff12; font-size:160px; }
-    .join-card h3 { font-size:18px; line-height:1.45; margin-bottom:8px; position:relative; z-index:1; }
-    .join-card p { margin:0 0 17px; font-size:11px; color:#d0dfd4; line-height:1.7; position:relative; z-index:1; }
-    .join-card a { display:inline-block; padding:10px 13px; background:#d8ed9b; color:#294c39; border-radius:7px; font-size:10px; font-weight:800; position:relative; z-index:1; }
-    .partner-card { padding:21px; }
-    .partner-card h3 { margin:0 0 6px; font-size:17px; }
-    .partner-card > p { margin:0 0 16px; color:var(--muted); font-size:11px; line-height:1.6; }
-    .partner-form { display:grid; gap:11px; }
-    .partner-form label { display:grid; gap:5px; color:var(--subtle-ink); font-size:11px; font-weight:700; }
-    .partner-form input,.partner-form textarea { width:100%; padding:10px 11px; border:1px solid var(--line); border-radius:8px; background:var(--surface-soft); color:var(--ink); font:inherit; font-size:12px; }
-    .partner-form textarea { min-height:88px; resize:vertical; }
-    .partner-form input:focus,.partner-form textarea:focus { outline:2px solid var(--green); outline-offset:1px; }
-    .partner-form button { padding:11px 14px; border:0; border-radius:8px; background:var(--green); color:white; font-size:12px; font-weight:700; cursor:pointer; }
-    .partner-form button:hover { filter:brightness(.92); }
-    .form-note { margin:0; color:var(--faint-ink); font-size:10px; line-height:1.5; }
-    footer { border-top:1px solid var(--line); padding:24px 0 30px; color:var(--faint-ink); font-size:10px; }
-    .footer-row { display:flex; justify-content:space-between; align-items:center; }
-    .footer-row .brand { font-size:17px; color:var(--ink); }.footer-row .brand-mark { width:24px; height:24px; font-size:13px; border-radius:8px 8px 8px 3px; }
-    [hidden] { display:none !important; }
-    @media(max-width:900px) { .topics { grid-template-columns:repeat(3,1fr); }.content-grid { grid-template-columns:minmax(0,1fr) 260px; gap:14px; }.hero-badge { right:6%; } }
-    @media(max-width:680px) {
-      .wrap { width:calc(100% - 32px); } header { height:66px; }.menu-toggle { display:block; cursor:pointer; }.nav-actions { margin-left:auto; margin-right:13px; }.login { display:none; }
-      .links { display:none; position:absolute; top:65px; left:0; right:0; background:var(--surface); padding:20px 24px; border-bottom:1px solid var(--line); flex-direction:column; align-items:flex-start; gap:19px; }.links.open { display:flex; }
-      .hero { margin-top:16px; padding:34px 25px 38px; min-height:315px; }.hero:after { right:-85px; top:98px; font-size:250px; opacity:.7; }.hero-badge { width:90px; height:90px; right:19px; bottom:18px; font-size:8px; }.hero-badge strong { font-size:18px; }.hero-copy { max-width:100%; padding-bottom:25px; } h1 { font-size:39px; letter-spacing:-2.5px; }.hero p { max-width:320px; font-size:12px; }.hero-note { display:none; }.hero-actions { margin-top:21px; }
-      .section-title { margin-top:34px; }.section-title h2 { font-size:19px; }.topics { grid-template-columns:repeat(3,1fr); gap:8px; }.topic { padding:12px 11px; min-height:100px; }.topic-icon { font-size:20px; margin-bottom:8px; }
-      .content-grid { grid-template-columns:1fr; margin-top:29px; margin-bottom:50px; }.side-column { display:grid; grid-template-columns:1fr 1fr; gap:10px; }.side-card { margin:0; padding:15px; }.side-card:first-child { grid-column:1 / -1; }.join-card h3 { font-size:15px; }.post { padding:16px 14px; grid-template-columns:36px 1fr; gap:9px; }.avatar { width:35px; height:35px; border-radius:12px; font-size:18px; }.post-art { display:none; }.feed-head { padding:18px 14px 0; }.feed-heading h2 { font-size:18px; }.post h3 { font-size:13px; }.post p { font-size:10px; }.filters { margin-top:15px; }.footer-row { align-items:flex-start; gap:10px; flex-direction:column; }
-    }
-    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*:before,*:after { transition:none !important; } }
+    :root{--paper:#f8f5ef;--ink:#28251f;--muted:#817b70;--line:#e9e3d9;--orange:#e7784b;--orange-dark:#bd5630;--peach:#f7e0d4;--blue:#dfe9ef;--card:#fffefa;--green:#587b67;--shadow:0 24px 70px #49341c12}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans','Noto Sans KR',sans-serif}button{font:inherit} .wrap{width:min(1080px,calc(100% - 40px));margin:auto}
+    header{height:76px;display:flex;align-items:center}.nav{display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;font-size:19px;letter-spacing:-1px}.brand span{color:var(--orange)}.nav-note{font-size:12px;color:var(--muted);font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr 390px;align-items:center;gap:44px;padding:56px 5% 48px;background:#f1e9dc;border-radius:28px;overflow:hidden;position:relative;min-height:420px}.hero:after{content:'✳';position:absolute;right:-65px;top:-135px;color:#e7dac6;font-size:420px;line-height:1;transform:rotate(15deg)}.hero-copy{position:relative;z-index:1}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--orange-dark);font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--orange)}h1{margin:19px 0 14px;font-size:clamp(43px,6vw,68px);line-height:1.12;letter-spacing:-4px;font-weight:900}h1 em{font-style:normal;color:var(--orange)}.hero p{margin:0;color:#6f685d;font-size:14px;line-height:1.9}.hero-art{z-index:1;display:grid;place-items:center;position:relative}.art-circle{width:280px;height:280px;border-radius:50%;background:#e4d5bd;display:grid;place-items:center;position:relative}.art-circle:before{content:'';position:absolute;inset:17px;border:1px dashed #c6b397;border-radius:50%}.animal-faces{font-size:129px;letter-spacing:-44px;transform:translateX(-17px);filter:drop-shadow(0 14px 12px #81674624);white-space:nowrap}.sticker{position:absolute;background:#fffefa;padding:10px 14px;border-radius:999px;font-size:11px;font-weight:800;box-shadow:0 8px 25px #563c1d16;transform:rotate(-8deg)}.sticker.one{top:25px;left:-17px;color:#b95f3c}.sticker.two{right:-15px;bottom:30px;transform:rotate(7deg);color:#527264}
+    .test-section{max-width:850px;margin:62px auto 80px}.section-heading{text-align:center;margin-bottom:24px}.section-heading small{color:var(--orange-dark);font-size:11px;font-weight:800;letter-spacing:1.4px}.section-heading h2{font-size:29px;letter-spacing:-1.3px;margin:9px 0 7px}.section-heading p{font-size:13px;color:var(--muted);margin:0}.test-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow)}.dropzone{min-height:255px;border:1.5px dashed #d9cfc0;border-radius:16px;background:#fcfaf6;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;transition:.2s}.dropzone.dragover{border-color:var(--orange);background:#fff5ef}.upload-icon{width:54px;height:54px;border-radius:18px;background:var(--peach);display:grid;place-items:center;font-size:25px;margin-bottom:13px}.dropzone h3{margin:0 0 7px;font-size:16px}.dropzone p{font-size:12px;color:var(--muted);margin:0 0 17px}.upload-button,.again{border:0;border-radius:10px;background:var(--ink);color:#fff;padding:12px 18px;font-size:12px;font-weight:800;cursor:pointer;transition:.2s}.upload-button:hover,.again:hover{background:var(--orange-dark);transform:translateY(-1px)}.hint{font-size:10px!important;margin:12px 0 0!important;color:#a49c8f!important}.file-input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}.privacy{display:flex;gap:8px;align-items:center;justify-content:center;margin:15px 0 0;color:#8a8378;font-size:10px}.privacy span{font-size:13px}
+    .working{display:none;text-align:center;padding:42px 20px}.working.show{display:block}.spinner{width:42px;height:42px;border:3px solid var(--peach);border-top-color:var(--orange);border-radius:50%;margin:0 auto 15px;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.working strong{font-size:14px}.working p{font-size:12px;color:var(--muted);margin:7px 0 0}
+    .result{display:none;grid-template-columns:230px 1fr;gap:30px;align-items:center;padding:8px}.result.show{display:grid}.preview-frame{width:100%;aspect-ratio:1;border-radius:17px;background:#f0ece4;overflow:hidden;position:relative}.preview-frame img{width:100%;height:100%;object-fit:cover}.result-label{font-size:10px;font-weight:800;letter-spacing:1.2px;color:var(--orange-dark)}.result h3{font-size:34px;letter-spacing:-1.5px;margin:8px 0 5px}.result h3 span{color:var(--orange)}.result-desc{font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 19px}.score-list{display:grid;gap:10px;margin-bottom:20px}.score-row{display:grid;grid-template-columns:80px 1fr 43px;align-items:center;gap:10px;font-size:11px;font-weight:700}.score-track{height:8px;background:#eee9e0;border-radius:99px;overflow:hidden}.score-fill{height:100%;border-radius:inherit;background:#b8cfc0;transition:width .7s}.score-row.winner .score-fill{background:var(--orange)}.score-row small{text-align:right;color:var(--muted);font-size:10px}.result-actions{display:flex;align-items:center;gap:13px}.again{background:var(--orange);padding:11px 16px}.change-file{color:var(--muted);font-size:11px;font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.error{display:none;padding:14px 16px;background:#fff0ec;color:#a74933;border-radius:10px;font-size:12px;margin-top:15px}.error.show{display:block}.footer{padding:24px 0 30px;border-top:1px solid var(--line);color:#968f84;font-size:10px}.footer-inner{display:flex;justify-content:space-between;gap:12px}
+    @media(max-width:760px){.hero{grid-template-columns:1fr;gap:20px;padding:38px 26px 25px;min-height:0}.hero:after{font-size:290px;right:-90px;top:-70px}.hero-copy{max-width:520px}.hero-art{height:190px}.art-circle{width:190px;height:190px}.animal-faces{font-size:91px;letter-spacing:-32px;transform:translateX(-12px)}.sticker{font-size:9px;padding:8px 11px}.sticker.one{left:3px;top:7px}.sticker.two{right:2px;bottom:9px}.test-section{margin:47px auto 60px}.section-heading h2{font-size:25px}.result{grid-template-columns:160px 1fr;gap:20px}.result h3{font-size:28px}}
+    @media(max-width:520px){.wrap{width:calc(100% - 28px)}header{height:62px}.nav-note{font-size:10px}.hero{border-radius:21px;padding:31px 22px 20px}h1{font-size:43px;letter-spacing:-2.8px}.hero p{font-size:12px}.hero-art{height:170px}.art-circle{width:170px;height:170px}.animal-faces{font-size:80px}.test-card{padding:14px;border-radius:17px}.dropzone{min-height:235px;padding:18px}.section-heading h2{font-size:22px}.section-heading p{font-size:11px}.result{grid-template-columns:1fr;gap:17px;padding:4px}.preview-frame{width:150px;margin:auto}.result-copy{text-align:center}.result h3{font-size:30px}.score-list{text-align:left}.result-actions{justify-content:center}.footer-inner{flex-direction:column}.privacy{font-size:9px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
   </style>
 </head>
 <body>
-  <header>
-    <nav class="nav wrap" aria-label="주요 메뉴">
-      <a class="brand" href="#home" aria-label="모여 홈"><span class="brand-mark">모</span>모여</a>
-      <button class="menu-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
-      <div class="links"><a href="#topics">관심사 찾기</a><a href="#feed">커뮤니티</a><a href="#popular">인기글</a></div>
-      <div class="nav-actions"><button class="theme-toggle" type="button" aria-label="다크 모드로 전환" title="다크 모드로 전환">☾</button><a class="login" href="#join">로그인</a><a class="join" href="#join">무료로 시작하기</a></div>
-    </nav>
-  </header>
-  <main id="home" class="wrap">
-    <section class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow"><i></i> 당신의 관심사가 모이는 곳</div>
-        <h1>좋아하는 마음으로<br><span>우리, 모여요.</span></h1>
-        <p>취향을 나누고, 궁금한 걸 묻고, 새로운 친구를 만나요.<br>나와 비슷한 사람들과 함께하는 커뮤니티.</p>
-        <div class="hero-actions"><a class="primary" href="#topics">내 관심사 찾기 <span>↗</span></a><span class="hero-note">오늘도 2,400명이 이야기 중이에요</span></div>
-      </div>
-      <div class="hero-badge">오늘의 새로운 만남<strong>+128</strong>명이 함께했어요</div>
+  <header><nav class="nav wrap" aria-label="주요 메뉴"><a class="brand" href="#top">animal<span>?</span></a><span class="nav-note">나의 동물상 찾기 · 30초 테스트</span></nav></header>
+  <main id="top" class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy"><div class="eyebrow"><i></i> YOUR ANIMAL VIBE</div><h1 id="hero-title">나는 무슨 <em>상?</em></h1><p>강아지상일까, 고양이상일까?<br>사진 한 장으로 나와 닮은 동물상을 알아봐요.</p></div>
+      <div class="hero-art" aria-hidden="true"><div class="art-circle"><div class="animal-faces">🐶🐱</div><span class="sticker one">멍뭉미 ૮ •ﻌ• ა</span><span class="sticker two">냥이력 ฅ^•ﻌ•^ฅ</span></div></div>
     </section>
-    <section id="topics">
-      <div class="section-title"><div><h2>어떤 이야기에 관심 있나요?</h2><p>마음 가는 주제를 골라 둘러보세요.</p></div><a class="more" href="#feed">전체 주제 보기 ↗</a></div>
-      <div class="topics">
-        <a class="topic" href="#feed" data-topic="일상"><span class="topic-icon">☕</span><strong>일상 수다</strong><small>오늘의 작은 이야기</small></a>
-        <a class="topic" href="#feed" data-topic="취미"><span class="topic-icon">🎨</span><strong>취미·만들기</strong><small>좋아하는 걸 나눠요</small></a>
-        <a class="topic" href="#feed" data-topic="책"><span class="topic-icon">📚</span><strong>책과 문장</strong><small>함께 읽고 이야기해요</small></a>
-        <a class="topic" href="#feed" data-topic="동네"><span class="topic-icon">🌿</span><strong>동네 생활</strong><small>우리 동네 소식</small></a>
-        <a class="topic" href="#feed" data-topic="커리어"><span class="topic-icon">💡</span><strong>일과 성장</strong><small>고민과 노하우</small></a>
-        <a class="topic" href="#feed" data-topic="여행"><span class="topic-icon">✈️</span><strong>여행 기록</strong><small>다음 여행을 준비해요</small></a>
-      </div>
-    </section>
-    <div class="content-grid">
-      <section class="feed-panel" id="feed">
-        <div class="feed-head">
-          <div class="feed-heading"><h2>지금 나누는 이야기</h2><a class="write" href="#join">＋ 글쓰기</a></div>
-          <div class="filters" role="group" aria-label="게시글 필터">
-            <button class="filter active" data-filter="전체">전체</button><button class="filter" data-filter="일상">일상</button><button class="filter" data-filter="취미">취미</button><button class="filter" data-filter="책">책</button><button class="filter" data-filter="동네">동네</button><button class="filter" data-filter="커리어">커리어</button><button class="filter" data-filter="여행">여행</button>
+    <section class="test-section" aria-labelledby="test-title">
+      <div class="section-heading"><small>QUICK TEST</small><h2 id="test-title">사진으로 알아보는 나의 동물상</h2><p>정면이 잘 보이는 사진을 올려주세요. 결과는 재미로만 봐주세요!</p></div>
+      <div class="test-card">
+        <div class="dropzone" id="dropzone">
+          <div class="upload-icon">📷</div><h3>사진을 여기에 놓아주세요</h3><p>또는 기기에서 사진을 선택해 주세요</p>
+          <button class="upload-button" id="choose-button" type="button">사진 선택하기 <span aria-hidden="true">↗</span></button>
+          <input class="file-input" id="file-input" type="file" accept="image/*" aria-label="분석할 사진 선택">
+          <p class="hint">JPG, PNG, WEBP · 사진은 분석 후 저장되지 않아요</p>
+        </div>
+        <div class="working" id="working" role="status" aria-live="polite"><div class="spinner"></div><strong>사진을 살펴보고 있어요</strong><p>잠시만 기다려주세요 🐾</p></div>
+        <div class="result" id="result" aria-live="polite">
+          <div class="preview-frame"><img id="preview" alt="분석한 사진 미리보기"></div>
+          <div class="result-copy"><div class="result-label">YOUR RESULT</div><h3>나는 <span id="winner-name">강아지상</span></h3><p class="result-desc" id="result-desc">친근하고 사랑스러운 매력이 가득해요!</p>
+            <div class="score-list" id="score-list"></div><div class="result-actions"><button class="again" id="again-button" type="button">다시 테스트하기</button><label class="change-file" for="file-input">다른 사진 선택</label></div>
           </div>
         </div>
-        <article class="post" data-category="일상"><div class="avatar">🐻</div><div><div class="post-meta"><b>느린오후</b><span>·</span><span class="board">일상 수다</span><span>· 12분 전</span></div><h3>요즘 퇴근하고 작은 산책을 시작했어요</h3><p>하루 종일 앉아 있다가 동네 한 바퀴 걷고 오면 기분이 꽤 달라지네요. 다들 저녁 시간 어떻게 보내세요?</p><div class="post-stats"><span>♡ 24</span><span>댓글 8</span><span>조회 132</span></div></div><div class="post-art">🌇</div></article>
-        <article class="post" data-category="취미"><div class="avatar blue">🪴</div><div><div class="post-meta"><b>초록손</b><span>·</span><span class="board">취미·만들기</span><span>· 28분 전</span></div><h3>초보 식집사에게 추천하는 식물 있을까요?</h3><p>햇빛이 많이 들지 않는 방에서도 잘 자라는 아이를 찾고 있어요. 물 주는 걸 자주 깜빡하는 편입니다 😅</p><div class="post-stats"><span>♡ 17</span><span>댓글 12</span><span>조회 96</span></div></div><div class="post-art">🪴</div></article>
-        <article class="post" data-category="책"><div class="avatar pink">📖</div><div><div class="post-meta"><b>책갈피</b><span>·</span><span class="board">책과 문장</span><span>· 41분 전</span></div><h3>최근에 읽은 책 중 오래 남은 문장이 있나요?</h3><p>저는 어제 읽은 에세이에서 “천천히 가도 괜찮다”는 문장을 오래 붙들고 있었어요.</p><div class="post-stats"><span>♡ 31</span><span>댓글 19</span><span>조회 204</span></div></div><div class="post-art">✍️</div></article>
-        <article class="post" data-category="동네"><div class="avatar yellow">🐈</div><div><div class="post-meta"><b>망원산책</b><span>·</span><span class="board">동네 생활</span><span>· 1시간 전</span></div><h3>망원동 조용한 작업 카페 추천해요 ☕</h3><p>콘센트도 많고 음악도 잔잔해서 집중하기 좋았어요. 근처에 더 좋은 곳 있으면 알려주세요!</p><div class="post-stats"><span>♡ 12</span><span>댓글 6</span><span>조회 88</span></div></div><div class="post-art">☕</div></article>
-        <article class="post" data-category="여행"><div class="avatar">🧳</div><div><div class="post-meta"><b>주말탐험가</b><span>·</span><span class="board">여행 기록</span><span>· 2시간 전</span></div><h3>혼자 떠나기 좋은 가을 여행지 같이 찾아요</h3><p>복잡하지 않고 천천히 걷기 좋은 곳을 찾고 있어요. 기차로 갈 수 있으면 더 좋고요.</p><div class="post-stats"><span>♡ 19</span><span>댓글 14</span><span>조회 157</span></div></div><div class="post-art">🍂</div></article>
-      </section>
-      <aside class="side-column">
-        <section class="side-card" id="popular"><h3>🔥 이번 주 인기글</h3>
-          <a class="trending" href="#feed"><span class="rank">01</span><span class="trend-text">올해 꼭 해보고 싶은 작은 목표<small>일상 수다 · 댓글 42</small></span></a>
-          <a class="trending" href="#feed"><span class="rank">02</span><span class="trend-text">주말에 같이 그림 그릴 분 찾아요<small>취미·만들기 · 댓글 28</small></span></a>
-          <a class="trending" href="#feed"><span class="rank">03</span><span class="trend-text">요즘 나를 웃게 한 것들 모음<small>일상 수다 · 댓글 23</small></span></a>
-          <a class="trending" href="#feed"><span class="rank">04</span><span class="trend-text">동네 친구와 플로깅 했어요 🌱<small>동네 생활 · 댓글 18</small></span></a>
-        </section>
-        <section class="side-card"><h3>모여와 함께하는 사람들</h3><div class="stats"><div class="stat"><strong>12.8k</strong><span>함께하는 멤버</span></div><div class="stat"><strong>1.2k</strong><span>오늘의 이야기</span></div></div></section>
-        <section class="side-card partner-card" id="join">
-          <h3>제휴 문의</h3>
-          <p>모여와 함께할 협업 아이디어를 들려주세요.</p>
-          <form class="partner-form" action="https://formspree.io/f/mrpqkqna" method="POST">
-            <label>이름<input type="text" name="name" autocomplete="name" required></label>
-            <label>이메일<input type="email" name="email" autocomplete="email" required></label>
-            <label>회사 또는 서비스명<input type="text" name="company"></label>
-            <label>문의 내용<textarea name="message" rows="4" required></textarea></label>
-            <input type="hidden" name="_subject" value="모여 제휴 문의">
-            <button type="submit">제휴 문의 보내기 ↗</button>
-            <p class="form-note">입력하신 정보는 제휴 문의 답변을 위해서만 사용됩니다.</p>
-          </form>
-        </section>
-      </aside>
-    </div>
+        <div class="error" id="error" role="alert"></div>
+      </div>
+      <div class="privacy"><span>🔒</span> 사진은 브라우저에서 분석되며 서버에 업로드되지 않습니다.</div>
+    </section>
   </main>
-  <footer><div class="wrap footer-row"><a class="brand" href="#home"><span class="brand-mark">모</span>모여</a><span>관심사가 비슷한 사람들과 함께, 모여</span><span>© 2025 MOYEO COMMUNITY</span></div></footer>
+  <footer class="footer"><div class="wrap footer-inner"><span>© 2026 animal? · 오늘의 가벼운 재미</span><span>AI 결과는 참고용이며 실제 성격이나 외모를 판단하지 않아요.</span></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
   <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const links = document.querySelector('.links');
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open);
-      toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
-      toggle.textContent = open ? '×' : '☰';
-    });
-    links.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      links.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', '메뉴 열기'); toggle.textContent = '☰';
-    }));
-    const themeToggle = document.querySelector('.theme-toggle');
-    const themeColor = document.querySelector('meta[name="theme-color"]');
-    function applyTheme(theme, persist = true) {
-      document.documentElement.dataset.theme = theme;
-      const nextTheme = theme === 'dark' ? 'light' : 'dark';
-      const label = nextTheme === 'dark' ? '다크 모드로 전환' : '화이트 모드로 전환';
-      themeToggle.textContent = theme === 'dark' ? '☀' : '☾';
-      themeToggle.setAttribute('aria-label', label);
-      themeToggle.title = label;
-      themeColor.setAttribute('content', theme === 'dark' ? '#141a16' : '#f5f7f4');
-      if (persist) localStorage.setItem('moyeo-theme', theme);
-    }
-    applyTheme(document.documentElement.dataset.theme, false);
-    themeToggle.addEventListener('click', () => {
-      applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
-    });
-    const filters = document.querySelectorAll('.filter');
-    const posts = document.querySelectorAll('.post');
-    function filterPosts(category) {
-      filters.forEach(button => button.classList.toggle('active', button.dataset.filter === category));
-      posts.forEach(post => { post.hidden = category !== '전체' && post.dataset.category !== category; });
-    }
-    filters.forEach(button => button.addEventListener('click', () => filterPosts(button.dataset.filter)));
-    document.querySelectorAll('.topic').forEach(topic => topic.addEventListener('click', () => filterPosts(topic.dataset.topic)));
+    (() => {
+      const MODEL_URL = 'https://teachablemachine.withgoogle.com/models/sFrOUwxJo/';
+      const dropzone = document.getElementById('dropzone');
+      const input = document.getElementById('file-input');
+      const working = document.getElementById('working');
+      const result = document.getElementById('result');
+      const error = document.getElementById('error');
+      const preview = document.getElementById('preview');
+      let modelPromise;
+      let currentUrl;
+      const loadModel = () => modelPromise ||= tmImage.load(MODEL_URL + 'model.json', MODEL_URL + 'metadata.json');
+      document.getElementById('choose-button').addEventListener('click', () => input.click());
+      document.getElementById('again-button').addEventListener('click', reset);
+      function reset() { result.classList.remove('show'); dropzone.hidden = false; error.classList.remove('show'); input.value = ''; if (currentUrl) URL.revokeObjectURL(currentUrl); currentUrl = null; }
+      function classType(name) {
+        const label = name.toLowerCase();
+        if (/고양|냥|cat|feline/.test(label)) return 'cat';
+        if (/강아|개|멍|dog|puppy|canine/.test(label)) return 'dog';
+        return null;
+      }
+      async function analyze(file) {
+        if (!file || !file.type.startsWith('image/')) return;
+        error.classList.remove('show'); dropzone.hidden = true; result.classList.remove('show'); working.classList.add('show');
+        if (currentUrl) URL.revokeObjectURL(currentUrl);
+        currentUrl = URL.createObjectURL(file); preview.src = currentUrl;
+        try {
+          await preview.decode();
+          const model = await loadModel();
+          const predictions = await model.predict(preview, false);
+          const cats = predictions.filter(p => classType(p.className) === 'cat');
+          const dogs = predictions.filter(p => classType(p.className) === 'dog');
+          if (!cats.length || !dogs.length) throw new Error('모델의 클래스 이름에서 강아지와 고양이를 찾지 못했어요. 모델 클래스명을 확인해 주세요.');
+          const catScore = cats.reduce((sum, p) => sum + p.probability, 0);
+          const dogScore = dogs.reduce((sum, p) => sum + p.probability, 0);
+          const catWins = catScore >= dogScore;
+          const winner = catWins ? '고양이상' : '강아지상';
+          document.getElementById('winner-name').textContent = winner;
+          document.getElementById('result-desc').textContent = catWins ? '도도하고 시크한 매력이 은근히 빛나요!' : '친근하고 사랑스러운 매력이 가득해요!';
+          const scores = [{name:'강아지상', value:dogScore, winner:!catWins},{name:'고양이상', value:catScore, winner:catWins}];
+          document.getElementById('score-list').innerHTML = scores.map(s => `<div class="score-row ${s.winner ? 'winner' : ''}"><span>${s.name}</span><div class="score-track"><div class="score-fill" style="width:${Math.round(s.value * 100)}%"></div></div><small>${Math.round(s.value * 100)}%</small></div>`).join('');
+          working.classList.remove('show'); result.classList.add('show');
+        } catch (e) {
+          working.classList.remove('show'); dropzone.hidden = false; error.textContent = '분석 중 문제가 생겼어요. 네트워크를 확인하고 다른 사진으로 다시 시도해 주세요. (' + (e.message || '모델을 불러오지 못했습니다') + ')'; error.classList.add('show');
+        }
+      }
+      input.addEventListener('change', () => analyze(input.files[0]));
+      ['dragenter','dragover'].forEach(type => dropzone.addEventListener(type, event => {event.preventDefault(); dropzone.classList.add('dragover')}));
+      ['dragleave','drop'].forEach(type => dropzone.addEventListener(type, event => {event.preventDefault(); dropzone.classList.remove('dragover')}));
+      dropzone.addEventListener('drop', event => analyze(event.dataTransfer.files[0]));
+    })();
   </script>
 </body>
 </html>
