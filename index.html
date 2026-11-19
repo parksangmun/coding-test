@@ -4,8 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f8f5ef">
-  <meta name="description" content="사진 한 장으로 알아보는 나의 강아지상·고양이상 테스트">
+  <meta name="description" content="사진으로 강아지상·고양이상을 재미로 비교해 보는 무료 테스트. 이용 방법과 AI 결과의 한계, 사진 처리 방식도 확인하세요.">
   <title>나는 무슨 상? — 동물상 테스트</title>
+  <link rel="canonical" href="https://parksangmun.github.io/coding-test/">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7042950186351982" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,20 +19,21 @@
     .test-section{max-width:850px;margin:62px auto 80px}.section-heading{text-align:center;margin-bottom:24px}.section-heading small{color:var(--orange-dark);font-size:11px;font-weight:800;letter-spacing:1.4px}.section-heading h2{font-size:29px;letter-spacing:-1.3px;margin:9px 0 7px}.section-heading p{font-size:13px;color:var(--muted);margin:0}.test-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow)}.dropzone{min-height:255px;border:1.5px dashed #d9cfc0;border-radius:16px;background:#fcfaf6;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;transition:.2s}.dropzone.dragover{border-color:var(--orange);background:#fff5ef}.upload-icon{width:54px;height:54px;border-radius:18px;background:var(--peach);display:grid;place-items:center;font-size:25px;margin-bottom:13px}.dropzone h3{margin:0 0 7px;font-size:16px}.dropzone p{font-size:12px;color:var(--muted);margin:0 0 17px}.upload-button,.again{border:0;border-radius:10px;background:var(--ink);color:#fff;padding:12px 18px;font-size:12px;font-weight:800;cursor:pointer;transition:.2s}.upload-button:hover,.again:hover{background:var(--orange-dark);transform:translateY(-1px)}.hint{font-size:10px!important;margin:12px 0 0!important;color:#a49c8f!important}.file-input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}.privacy{display:flex;gap:8px;align-items:center;justify-content:center;margin:15px 0 0;color:#8a8378;font-size:10px}.privacy span{font-size:13px}
     .working{display:none;text-align:center;padding:42px 20px}.working.show{display:block}.spinner{width:42px;height:42px;border:3px solid var(--peach);border-top-color:var(--orange);border-radius:50%;margin:0 auto 15px;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.working strong{font-size:14px}.working p{font-size:12px;color:var(--muted);margin:7px 0 0}
     .result{display:none;grid-template-columns:230px 1fr;gap:30px;align-items:center;padding:8px}.result.show{display:grid}.preview-frame{width:100%;aspect-ratio:1;border-radius:17px;background:#f0ece4;overflow:hidden;position:relative}.preview-frame img{width:100%;height:100%;object-fit:cover}.result-label{font-size:10px;font-weight:800;letter-spacing:1.2px;color:var(--orange-dark)}.result h3{font-size:34px;letter-spacing:-1.5px;margin:8px 0 5px}.result h3 span{color:var(--orange)}.result-desc{font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 19px}.score-list{display:grid;gap:10px;margin-bottom:20px}.score-row{display:grid;grid-template-columns:80px 1fr 43px;align-items:center;gap:10px;font-size:11px;font-weight:700}.score-track{height:8px;background:#eee9e0;border-radius:99px;overflow:hidden}.score-fill{height:100%;border-radius:inherit;background:#b8cfc0;transition:width .7s}.score-row.winner .score-fill{background:var(--orange)}.score-row small{text-align:right;color:var(--muted);font-size:10px}.result-actions{display:flex;align-items:center;gap:13px}.again{background:var(--orange);padding:11px 16px}.change-file{color:var(--muted);font-size:11px;font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.error{display:none;padding:14px 16px;background:#fff0ec;color:#a74933;border-radius:10px;font-size:12px;margin-top:15px}.error.show{display:block}.footer{padding:24px 0 30px;border-top:1px solid var(--line);color:#968f84;font-size:10px}.footer-inner{display:flex;justify-content:space-between;gap:12px}
+    .editorial{max-width:850px;margin:0 auto 76px}.editorial-intro{text-align:center;margin-bottom:24px}.editorial-intro small{color:var(--orange-dark);font-size:11px;font-weight:800;letter-spacing:1.2px}.editorial-intro h2{font-size:27px;letter-spacing:-1px;margin:8px 0}.editorial-intro p{color:var(--muted);font-size:13px;line-height:1.7}.info-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:25px 28px;margin:14px 0}.info-card h3{font-size:17px;letter-spacing:-.4px;margin:0 0 10px}.info-card p,.info-card li{font-size:13px;line-height:1.9;color:#655f56}.info-card p{margin:7px 0}.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.faq details{border-top:1px solid var(--line);padding:14px 0}.faq details:last-child{border-bottom:1px solid var(--line)}.faq summary{cursor:pointer;font-size:13px;font-weight:800}.faq details p{margin:9px 0 0}.site-links{display:flex;gap:17px;flex-wrap:wrap}.site-links a{color:var(--orange-dark);font-weight:700;text-decoration:underline;text-underline-offset:3px}
     @media(max-width:760px){.hero{grid-template-columns:1fr;gap:20px;padding:38px 26px 25px;min-height:0}.hero:after{font-size:290px;right:-90px;top:-70px}.hero-copy{max-width:520px}.hero-art{height:190px}.art-circle{width:190px;height:190px}.animal-faces{font-size:91px;letter-spacing:-32px;transform:translateX(-12px)}.sticker{font-size:9px;padding:8px 11px}.sticker.one{left:3px;top:7px}.sticker.two{right:2px;bottom:9px}.test-section{margin:47px auto 60px}.section-heading h2{font-size:25px}.result{grid-template-columns:160px 1fr;gap:20px}.result h3{font-size:28px}}
-    @media(max-width:520px){.wrap{width:calc(100% - 28px)}header{height:62px}.nav-note{font-size:10px}.hero{border-radius:21px;padding:31px 22px 20px}h1{font-size:43px;letter-spacing:-2.8px}.hero p{font-size:12px}.hero-art{height:170px}.art-circle{width:170px;height:170px}.animal-faces{font-size:80px}.test-card{padding:14px;border-radius:17px}.dropzone{min-height:235px;padding:18px}.section-heading h2{font-size:22px}.section-heading p{font-size:11px}.result{grid-template-columns:1fr;gap:17px;padding:4px}.preview-frame{width:150px;margin:auto}.result-copy{text-align:center}.result h3{font-size:30px}.score-list{text-align:left}.result-actions{justify-content:center}.footer-inner{flex-direction:column}.privacy{font-size:9px}}
+    @media(max-width:520px){.wrap{width:calc(100% - 28px)}header{height:62px}.site-links{gap:10px}.site-links a{font-size:10px}.hero{border-radius:21px;padding:31px 22px 20px}h1{font-size:43px;letter-spacing:-2.8px}.hero p{font-size:12px}.hero-art{height:170px}.art-circle{width:170px;height:170px}.animal-faces{font-size:80px}.test-card{padding:14px;border-radius:17px}.dropzone{min-height:235px;padding:18px}.section-heading h2{font-size:22px}.section-heading p{font-size:11px}.result{grid-template-columns:1fr;gap:17px;padding:4px}.preview-frame{width:150px;margin:auto}.result-copy{text-align:center}.result h3{font-size:30px}.score-list{text-align:left}.result-actions{justify-content:center}.info-grid{grid-template-columns:1fr}.info-card{padding:20px}.editorial-intro h2{font-size:23px}.footer-inner{flex-direction:column}.privacy{font-size:9px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
   </style>
 </head>
 <body>
-  <header><nav class="nav wrap" aria-label="주요 메뉴"><a class="brand" href="#top">animal<span>?</span></a><span class="nav-note">나의 동물상 찾기 · 30초 테스트</span></nav></header>
+  <header><nav class="nav wrap" aria-label="주요 메뉴"><a class="brand" href="#top">animal<span>?</span></a><div class="site-links"><a href="#test-title">테스트</a><a href="#guide">이용 안내</a><a href="about.html">사이트 소개</a></div></nav></header>
   <main id="top" class="wrap">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy"><div class="eyebrow"><i></i> YOUR ANIMAL VIBE</div><h1 id="hero-title">나는 무슨 <em>상?</em></h1><p>강아지상일까, 고양이상일까?<br>사진 한 장으로 나와 닮은 동물상을 알아봐요.</p></div>
       <div class="hero-art" aria-hidden="true"><div class="art-circle"><div class="animal-faces">🐶🐱</div><span class="sticker one">멍뭉미 ૮ •ﻌ• ა</span><span class="sticker two">냥이력 ฅ^•ﻌ•^ฅ</span></div></div>
     </section>
     <section class="test-section" aria-labelledby="test-title">
-      <div class="section-heading"><small>QUICK TEST</small><h2 id="test-title">사진으로 알아보는 나의 동물상</h2><p>정면이 잘 보이는 사진을 올려주세요. 결과는 재미로만 봐주세요!</p></div>
+      <div class="section-heading"><small>QUICK TEST</small><h2 id="test-title">사진으로 알아보는 나의 동물상</h2><p>사용 방법과 분석 한계를 아래에서 확인한 뒤 사진을 선택해 주세요.</p></div>
       <div class="test-card">
         <div class="dropzone" id="dropzone">
           <div class="upload-icon">📷</div><h3>사진을 여기에 놓아주세요</h3><p>또는 기기에서 사진을 선택해 주세요</p>
@@ -48,10 +50,24 @@
         </div>
         <div class="error" id="error" role="alert"></div>
       </div>
-      <div class="privacy"><span>🔒</span> 사진은 브라우저에서 분석되며 서버에 업로드되지 않습니다.</div>
+      <div class="privacy"><span>🔒</span> 사진은 브라우저에서 분석되며 이 사이트 서버에 업로드되지 않습니다.</div>
+    </section>
+    <section class="editorial" id="guide" aria-labelledby="guide-title">
+      <div class="editorial-intro"><small>HOW IT WORKS</small><h2 id="guide-title">동물상 테스트, 이렇게 이용하세요</h2><p>이 페이지는 가벼운 체험용 이미지 분류 도구입니다. 결과를 이해하는 데 필요한 정보와 제한 사항을 함께 안내합니다.</p></div>
+      <div class="info-grid">
+        <article class="info-card"><h3>1. 사진을 준비해요</h3><p>밝고 선명하며 얼굴이 가운데에 있는 사진이 비교하기 쉽습니다. 얼굴을 가리는 물건, 강한 역광, 여러 명이 함께 나온 사진은 결과에 영향을 줄 수 있어요. 본인 또는 사용 허락을 받은 사진만 선택해 주세요.</p></article>
+        <article class="info-card"><h3>2. 결과를 읽어요</h3><p>결과의 퍼센트는 입력한 이미지에 대해 모델이 각 클래스를 얼마나 선택했는지 보여주는 값입니다. 사람의 성격이나 실제 외모의 객관적 측정값, 정확도 또는 확률 보증을 뜻하지 않습니다.</p></article>
+      </div>
+      <article class="info-card"><h3>분석 방식과 꼭 알아둘 한계</h3><p>이 테스트는 Google Teachable Machine으로 만든 두 클래스 이미지 분류 모델을 브라우저에서 실행합니다. 모델은 강아지와 고양이로 표시된 클래스를 비교하고, 더 높은 점수의 결과를 보여줍니다. 모델의 학습 이미지와 조건은 제작자가 정한 것이며, 독립적인 연구나 사람 얼굴에 대한 성능 검증을 거친 도구가 아닙니다.</p><p>따라서 사람 사진에서 나온 강아지상·고양이상 결과는 학습 데이터의 편향, 조명, 각도, 배경과 이미지 품질에 따라 달라질 수 있습니다. 동물 사진이나 다른 이미지에서도 분류가 가능할 수 있지만, 이 테스트가 제공하는 설명은 오락 목적입니다. 중요한 판단이나 사람에 대한 평가에 사용하지 마세요.</p></article>
+      <article class="info-card faq"><h3>자주 묻는 질문</h3>
+        <details><summary>사진이 어디로 전송되나요?</summary><p>선택한 이미지 파일은 이 사이트의 서버로 업로드하지 않습니다. 이미지 분류는 브라우저에서 이루어집니다. 다만 모델 파일과 실행 라이브러리를 외부 제공자에게서 불러오므로 브라우저가 해당 서버에 연결됩니다. 자세한 내용은 <a href="privacy.html">개인정보 안내</a>를 확인하세요.</p></details>
+        <details><summary>점수가 높으면 더 정확한 결과인가요?</summary><p>아니요. 점수는 이 모델 안에서 두 클래스 중 어느 쪽에 더 가까운 출력이 나왔는지 보여줄 뿐, 사람 얼굴에 대한 정확도나 신뢰도를 보증하지 않습니다.</p></details>
+        <details><summary>사진을 올렸는데 작동하지 않아요.</summary><p>최신 브라우저를 사용하고 인터넷 연결을 확인해 주세요. 모델과 실행 라이브러리를 외부에서 불러오므로 네트워크 차단이나 서비스 장애가 있으면 분석이 시작되지 않을 수 있습니다. JPG, PNG, WEBP 형식의 이미지로 다시 시도해 보세요.</p></details>
+        <details><summary>결과를 공유하거나 저장할 수 있나요?</summary><p>현재 사이트는 결과 이미지나 사진을 서버에 저장하거나 공유 링크를 만들지 않습니다. 결과를 공유하고 싶다면 화면을 캡처하되, 다른 사람의 사진은 허락을 받고 공유해 주세요.</p></details>
+      </article>
     </section>
   </main>
-  <footer class="footer"><div class="wrap footer-inner"><span>© 2026 animal? · 오늘의 가벼운 재미</span><span>AI 결과는 참고용이며 실제 성격이나 외모를 판단하지 않아요.</span></div></footer>
+  <footer class="footer"><div class="wrap footer-inner"><span>© 2026 animal? · 오늘의 가벼운 재미</span><nav class="site-links" aria-label="사이트 정보"><a href="about.html">사이트 소개</a><a href="privacy.html">개인정보 처리 안내</a><a href="https://github.com/parksangmun/coding-test/issues" target="_blank" rel="noopener">문의 및 의견</a></nav></div></footer>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
   <script>
