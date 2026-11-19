@@ -26,7 +26,7 @@
   </style>
 </head>
 <body>
-  <header><nav class="nav wrap" aria-label="주요 메뉴"><a class="brand" href="#top">animal<span>?</span></a><div class="site-links"><a href="#test-title">테스트</a><a href="#guide">이용 안내</a><a href="about.html">사이트 소개</a></div></nav></header>
+  <header><nav class="nav wrap" aria-label="주요 메뉴"><a class="brand" href="#top">animal<span>?</span></a><div class="site-links"><a href="#test-title">테스트</a><a href="#guide">이용 안내</a><a href="how-it-works.html">모델 설명</a><a href="photo-guide.html">사진 가이드</a></div></nav></header>
   <main id="top" class="wrap">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy"><div class="eyebrow"><i></i> YOUR ANIMAL VIBE</div><h1 id="hero-title">나는 무슨 <em>상?</em></h1><p>강아지상일까, 고양이상일까?<br>사진 한 장으로 나와 닮은 동물상을 알아봐요.</p></div>
@@ -65,9 +65,13 @@
         <details><summary>사진을 올렸는데 작동하지 않아요.</summary><p>최신 브라우저를 사용하고 인터넷 연결을 확인해 주세요. 모델과 실행 라이브러리를 외부에서 불러오므로 네트워크 차단이나 서비스 장애가 있으면 분석이 시작되지 않을 수 있습니다. JPG, PNG, WEBP 형식의 이미지로 다시 시도해 보세요.</p></details>
         <details><summary>결과를 공유하거나 저장할 수 있나요?</summary><p>현재 사이트는 결과 이미지나 사진을 서버에 저장하거나 공유 링크를 만들지 않습니다. 결과를 공유하고 싶다면 화면을 캡처하되, 다른 사람의 사진은 허락을 받고 공유해 주세요.</p></details>
       </article>
+      <div class="info-grid">
+        <article class="info-card"><h3><a href="how-it-works.html">AI 결과는 어떻게 나오나요? ↗</a></h3><p>분류 과정, 점수의 의미, 입력 이미지에 따른 차이와 모델의 한계를 자세히 설명합니다.</p></article>
+        <article class="info-card"><h3><a href="photo-guide.html">테스트 사진 가이드 ↗</a></h3><p>사진을 고르는 요령, 조건을 바꾸어 비교하는 방법, 개인정보와 문제 해결 정보를 확인하세요.</p></article>
+      </div>
     </section>
   </main>
-  <footer class="footer"><div class="wrap footer-inner"><span>© 2026 animal? · 오늘의 가벼운 재미</span><nav class="site-links" aria-label="사이트 정보"><a href="about.html">사이트 소개</a><a href="privacy.html">개인정보 처리 안내</a><a href="https://github.com/parksangmun/coding-test/issues" target="_blank" rel="noopener">문의 및 의견</a></nav></div></footer>
+  <footer class="footer"><div class="wrap footer-inner"><span>© 2026 animal? · 오늘의 가벼운 재미</span><nav class="site-links" aria-label="사이트 정보"><a href="about.html">사이트 소개</a><a href="how-it-works.html">모델 설명</a><a href="photo-guide.html">사진 가이드</a><a href="privacy.html">개인정보 처리 안내</a><a href="https://github.com/parksangmun/coding-test/issues" target="_blank" rel="noopener">문의 및 의견</a></nav></div></footer>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
   <script>
